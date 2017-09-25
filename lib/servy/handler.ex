@@ -16,16 +16,16 @@ defmodule Servy.Handler do
   end
 
   def route(conv) do
-    conv = %{ method: "GET", path: "/wildthings", resp_body: "Bear, Lions, Tigers" }
+    %{ conv | resp_body: "Bear, Lions, Tigers" }
   end
 
   def format_response(conv) do
     """
     HTTP/1.1 200 OK
     Content-Type: text/html
-    Content-Length: 20
-
-    Bears, Lions, Tigers
+    Content-Length: #{conv.resp_body |> byte_size}
+  
+    #{conv.resp_body}
     """
   end
 end
@@ -37,6 +37,3 @@ User-Agent: ExampleBrowser/1.0
 Accept: */*
 
 """
-
-response = Servy.Handler.handle(request)
-IO.puts response
