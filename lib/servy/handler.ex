@@ -26,11 +26,11 @@ defmodule Servy.Handler do
     %{ conv | resp_body: "Teddy, Smokey, Paddington", status: 200 }
   end
 
-  def route(%{method: "GET", path: "/bears/" <> id} = conv) do
+  def route(%{method: "GET", path: "/bears/" <> _id} = conv) do
     %{ conv | resp_body: "Bears, Lions, Tigers", status: 200 }
   end
 
-  def route(%{method: "DELETE", path: "/bears/" <> id} = conv) do
+  def route(%{method: "DELETE", path: "/bears/" <> _id} = conv) do
     %{ conv | resp_body: "Success", status: 200 }
   end
 
