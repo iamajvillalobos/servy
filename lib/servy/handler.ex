@@ -49,11 +49,10 @@ defmodule Servy.Handler do
   end
 
   defp status_reason(code) do
-    %{
-      200 => "OK",
-      404 => "Not Found"
-    }[code]
+    codes = %{ 200 => "OK", 404 => "Not Found"}
+    codes[code]
   end
+  
 end
 
 request = """
